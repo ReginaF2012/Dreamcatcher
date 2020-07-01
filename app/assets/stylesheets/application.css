@@ -14,10 +14,10 @@
  *= require_self
  */
  body {
-    background-color: #cccccc;
+    background-color: #82619c;
    }
 
 .container {
     /* background-image: url("../images/dreamcatcher.jpg");     */
-    background-color:#82619c;
+    background-color: #cccccc;
   }
