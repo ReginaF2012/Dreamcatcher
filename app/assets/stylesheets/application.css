@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+ body {
+    background-color: #cccccc;
+   }
+
+.container {
+    /* background-image: url("../images/dreamcatcher.jpg");     */
+    background-color:#82619c;
+  }
