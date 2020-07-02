@@ -9,9 +9,8 @@ class User < ApplicationRecord
             user
         else
             #create a new user
-            user = self.new(email: auth_hash['info']['email'], password: SecureRandom.hex)
-            user.save
-            user
+            byebug
+            self.create(email: auth_hash['info']['email'], password: SecureRandom.hex)
         end
     end
 end
