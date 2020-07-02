@@ -25,6 +25,7 @@
           <% if logged_in? %>
             <a class="nav-item nav-link" href="#">Features</a>
             <a class="nav-item nav-link" href="#">Pricing</a>
+            <a class="nav-item nav-link" href="<%= logout_path %>">Log Out</a>
           <% else %>
             <a class="nav-item nav-link" href="<%= login_path %>">Log In</a>
             <a class="nav-item nav-link" href="<%= signup_path %>">Sign Up</a>
