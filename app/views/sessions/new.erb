@@ -1,6 +1,7 @@
 <div class="container">
-  <h1><%= link_to "Log In with Google", "/auth/google_oauth2" %></h1>
-  <h1>Log In with Email</h1>
+  <h1>Login with Google</h1>
+  <%= link_to(image_tag("/images/btn_google_signin_dark_normal_web.png"), "/auth/google_oauth2") %>
+  <h1>Login with Email</h1>
   <%=  form_with url: "/login", method: :post do |f|%>
     <div class="form-group">
       <%= f.label :email, "Email:" %><br>

@@ -15,18 +15,18 @@
     </div>
   <% end %>
   <div class="form-group">
-    <%= f.label :username, "Username:" %><br>
+    <%= f.label "Username:" %><br>
     <%= f.text_field :username, value: @user.username %><br>
 
-    <%= f.label :email, "Email:" %><br>
+    <%= f.label "Email:" %><br>
     <%= f.email_field :email, value: @user.email %><br>
 
 
-    <%= f.label :password, "Password:" %><br>
+    <%= f.label "Password:" %><br>
     <%= f.password_field :password %><br>
 
 
-    <%= f.label :password_confirmation, "Password Confirmation:" %><br>
+    <%= f.label "Password Confirmation:" %><br>
     <%= f.password_field :password_confirmation %><br>
   </div>
   <%= f.submit "Sign Up" if !logged_in? %>

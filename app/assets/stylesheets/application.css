@@ -21,3 +21,8 @@
     /* background-image: url("../images/dreamcatcher.jpg");     */
     background-color: #cccccc;
   }
+
+  .field_with_errors input{
+     border-width: 1px;
+     border-color: red ;
+   }
