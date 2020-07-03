@@ -2,5 +2,5 @@
   <h1>Sign up with Google</h1>
   <%= link_to(image_tag("/images/btn_google_signin_dark_normal_web.png"), "/auth/google_oauth2") %>
   <h1>Sign up with Email</h1>
-  <%= render 'form' %>
+  <%= render 'form', user: @user %>
 </div>

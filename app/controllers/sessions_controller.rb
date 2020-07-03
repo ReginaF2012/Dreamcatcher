@@ -15,12 +15,20 @@ class SessionsController < ApplicationController
             @user = User.find_or_create_by_auth_hash(auth_hash)
             log_in
         else
-            #byebug
-            @user =  User.find_by(email: params[:email])
-            if @user.authenticate(params[:password])
-                log_in
+            #if the user can be found in the db via email
+            if @user =  User.find_by(email: params[:email])
+                #authenticate
+                if @user.authenticate(params[:password])
+                    log_in
+                #found via email but can't authenticate with password
+                else
+                    flash[:alert] = "incorrect password"
+                    redirect_to login_path
+                end
             else
-                render 'new'
+                flash[:alert] = "incorrect email"
+                #can't find via email
+                redirect_to login_path
             end
         end
     end
