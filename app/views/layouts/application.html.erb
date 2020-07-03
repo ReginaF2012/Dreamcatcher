@@ -24,7 +24,15 @@
           <a class="nav-item nav-link" href="<%= root_path %>">Home</a>
           <% if logged_in? %>
             <a class="nav-item nav-link" href="<%= user_path(current_user) %>">Profile</a>
-            <a class="nav-item nav-link" href="#">Dreams</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Your Dreams
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">All</a>
+                <a class="dropdown-item" href="#">New</a>
+              </div>
+            </li>
             <a class="nav-item nav-link" href="<%= logout_path %>">Log Out</a>
           <% else %>
             <a class="nav-item nav-link" href="<%= login_path %>">Log In</a>

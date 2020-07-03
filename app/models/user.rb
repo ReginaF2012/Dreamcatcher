@@ -3,6 +3,7 @@ class User < ApplicationRecord
     validates :email, presence: :true, uniqueness: :true
     has_many :dreams, dependent: :destroy
     has_many :symbolisms, through: :dreams
+    validates :password_confirmation, presence: true
     has_secure_password
 
     def self.find_or_create_by_auth_hash(auth_hash)
