@@ -4,6 +4,7 @@ class DreamsController < ApplicationController
     end
 
     def new
+        @dream = Dream.new(user: current_user)
     end
 
     def create
@@ -20,5 +21,5 @@ class DreamsController < ApplicationController
 
     def destroy
     end
-    
+
 end

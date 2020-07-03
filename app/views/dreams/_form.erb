@@ -1,0 +1,21 @@
+<%= form_with model: dream, local: true do |f| %>
+  <% if dream.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger" role="alert">
+      <h2>
+        <%= pluralize(dream.errors.count, "error") %>
+        prohibited this dream from being saved:
+      </h2>
+  
+      <ul>
+      <% dream.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+
+    </div>
+  <% end %>
+  <div class="form-group">
+    
+  </div>
+  <%= f.submit %>
+<% end %>
