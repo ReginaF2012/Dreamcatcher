@@ -27,12 +27,4 @@ class UsersController < ApplicationController
     def user_params(*args)
         params.require(:user).permit(*args)
     end
-    
-    # def password_confirmation_match
-    #     if params[:user][:password] != params[:user][:password_confirmation]
-    #         @user.errors[:password] << "Passwords don't match"
-    #     else
-    #         true
-    #     end
-    # end
 end
