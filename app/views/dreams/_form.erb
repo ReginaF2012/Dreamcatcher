@@ -23,6 +23,7 @@
     <p>
     <%= f.fields_for :symbolisms, dream.symbolisms do |sf| %>
     <h3>Symbols:</h3>
+      <%= f.collection_select :symbolism_ids, Symbolism.all, :id, :name, include_blank: true %> <br>
       <%= sf.label "Name:" %><br>
       <%= sf.text_field :name %><br>
       <%= sf.fields_for :dream_symbolisms, DreamSymbolism.new do |dsf| %>
