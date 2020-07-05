@@ -1,4 +1,4 @@
-<%= form_with model: dream, local: true do |f| %>
+<%= form_with model: dream, url: url, local: true do |f| %>
   <% if dream.errors.any? %>
     <div id="error_explanation" class="alert alert-danger" role="alert">
       <h2>
@@ -15,7 +15,24 @@
     </div>
   <% end %>
   <div class="form-group">
-    
+    <%= f.label "Title:" %>
+    <%= f.text_field :title %>
+    <br>
+    <%= f.label "Description:" %><br>
+    <p><%= f.text_area :content, class: "textarea", size:"100x10" %></p>
+    <p>
+    <%= f.fields_for :symbolisms, dream.symbolisms do |sf| %>
+    <h3>Symbols:</h3>
+      <%= sf.label "Name:" %><br>
+      <%= sf.text_field :name %><br>
+      <%= sf.fields_for :dream_symbolisms, DreamSymbolism.new do |dsf| %>
+        <%= dsf.label "Meaning:" %><br>
+        <%= dsf.text_field :meaning %><br>
+        <%= dsf.hidden_field :dream_id, value: dream.id %>
+        <br><br>
+      <% end %>
+    <% end %>
+    </p>
   </div>
   <%= f.submit %>
 <% end %>

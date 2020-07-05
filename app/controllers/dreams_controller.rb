@@ -4,10 +4,15 @@ class DreamsController < ApplicationController
     end
 
     def new
-        @dream = Dream.new(user: current_user)
+        @dream = Dream.new
+        5.times do 
+          @dream.symbolisms.build
+        end
     end
 
+
     def create
+        byebug
     end
 
     def show
@@ -20,6 +25,12 @@ class DreamsController < ApplicationController
     end
 
     def destroy
+    end
+
+    private
+
+    def dream_params(*args)
+        params.require(:user).permit(*args)
     end
 
 end
