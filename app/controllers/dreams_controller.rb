@@ -1,5 +1,6 @@
 class DreamsController < ApplicationController
     before_action :set_dream, only: [:show, :edit]
+    before_action :require_login, only: [:new, :edit]
 
     def index
         if params[:user_id]
