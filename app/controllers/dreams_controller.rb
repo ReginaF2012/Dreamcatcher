@@ -2,6 +2,16 @@ class DreamsController < ApplicationController
     before_action :set_dream, only: [:show, :edit]
 
     def index
+        if params[:user_id]
+            @user = User.find_by(id: params[:user_id])
+            if @user == current_user
+                @dreams = @user.dreams 
+            else
+                @dreams = @user.dreams.made_public
+            end
+        else
+            @dreams = Dream.all.made_public
+        end     
     end
 
     def new
