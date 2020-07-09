@@ -22,11 +22,11 @@ class SessionsController < ApplicationController
                     log_in
                 #found via email but can't authenticate with password
                 else
-                    flash[:alert] = "incorrect password"
+                    flash[:error] = "incorrect password"
                     redirect_to login_path
                 end
             else
-                flash[:alert] = "incorrect email"
+                flash[:error] = "incorrect email"
                 #can't find via email
                 redirect_to login_path
             end

@@ -1,5 +1,5 @@
 class Dream < ApplicationRecord
-    scope :made_public, -> { where(public: true) }
+    scope :made_public, -> { where(is_public: true) }
     validates :title, presence: :true, uniqueness: { scope: :user,
     message: "must be unique" }
     validates :content, presence: :true

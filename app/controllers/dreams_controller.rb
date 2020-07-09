@@ -13,7 +13,7 @@ class DreamsController < ApplicationController
 
 
     def create
-        @dream = Dream.new(dream_params(:user_id, :title, :content, :dream_type, :public))
+        @dream = Dream.new(dream_params(:user_id, :title, :content, :dream_type, :is_public))
         if @dream.save
             redirect_to user_dream_path(current_user, @dream)
         else
@@ -25,6 +25,7 @@ class DreamsController < ApplicationController
     end
 
     def edit
+        check_user
     end
     
     def update
@@ -41,6 +42,13 @@ class DreamsController < ApplicationController
 
     def set_dream
         @dream = Dream.find_by(id: params[:id])
+    end
+
+    def check_user
+        unless current_user == @dream.user
+            flash[:error] = "Invalid Input"
+            redirect_to root_path
+        end
     end
 
 end

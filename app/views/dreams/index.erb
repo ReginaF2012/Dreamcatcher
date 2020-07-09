@@ -1,5 +1,7 @@
-<ul><h1>Dreams:</h1>
-<% @dreams.each do |dream| %>
-    <li><%= link_to(dream.title, dream) %></li>
-<% end %>
-</ul>
+<div class="container">
+    <ul><h1>Dreams:</h1>
+        <% @dreams.each do |dream| %>
+            <li><%= link_to(dream.title, user_dream_path(dream.user, dream)) %></li>
+        <% end %>
+    </ul>
+</div>
