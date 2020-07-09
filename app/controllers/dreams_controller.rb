@@ -1,6 +1,6 @@
 class DreamsController < ApplicationController
-    before_action :set_dream, only: [:show, :edit, :update, :destroy]
     before_action :require_login, only: [:new, :edit, :update, :destroy]
+    before_action :set_dream, only: [:show, :edit, :update, :destroy]
     before_action :check_user, only: [:edit, :update, :destroy]
 
     def index
@@ -29,6 +29,7 @@ class DreamsController < ApplicationController
     end
     
     def update
+        byebug
     end
 
     def destroy

@@ -1,1 +1,4 @@
-<h1>Edit Dream</h1>
+<div class="container">
+    <h1>Edit Dream</h1>
+    <%= render 'form',  method: :patch, dream: @dream, url: "/users/#{current_user.id}/dreams/#{@dream.id}" %>
+</div>
