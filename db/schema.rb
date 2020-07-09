@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2020_07_02_194925) do
   enable_extension "plpgsql"
 
   create_table "dream_symbolisms", force: :cascade do |t|
-    t.bigint "dream_id", null: false
+    t.bigint "dream_id"
     t.bigint "symbolism_id", null: false
     t.text "meaning"
     t.datetime "created_at", precision: 6, null: false

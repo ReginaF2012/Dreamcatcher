@@ -1,18 +1,21 @@
 class DreamsController < ApplicationController
+    before_action :set_dream, only: [:show, :edit]
 
     def index
     end
 
     def new
         @dream = Dream.new
-        5.times do 
-          @dream.symbolisms.build
-        end
     end
 
 
     def create
-        byebug
+        @dream = Dream.new(dream_params(:user_id, :title, :content, :dream_type, :public))
+        if @dream.save
+            redirect_to user_dream_path(current_user, @dream)
+        else
+            render 'new'
+        end
     end
 
     def show
@@ -30,7 +33,11 @@ class DreamsController < ApplicationController
     private
 
     def dream_params(*args)
-        params.require(:user).permit(*args)
+        params.require(:dream).permit(*args)
+    end
+
+    def set_dream
+        @dream = Dream.find_by(id: params[:id])
     end
 
 end
