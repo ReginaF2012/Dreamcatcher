@@ -1,6 +1,7 @@
 class DreamsController < ApplicationController
-    before_action :set_dream, only: [:show, :edit]
-    before_action :require_login, only: [:new, :edit]
+    before_action :set_dream, only: [:show, :edit, :update, :destroy]
+    before_action :require_login, only: [:new, :edit, :update, :destroy]
+    before_action :check_user, only: [:edit, :update, :destroy]
 
     def index
         params[:user_id] && @user = User.find_by(id: params[:user_id])
@@ -25,13 +26,14 @@ class DreamsController < ApplicationController
     end
 
     def edit
-        check_user
     end
     
     def update
     end
 
     def destroy
+        @dream.destroy
+        redirect_to user_dreams_path(current_user)
     end
 
     private
