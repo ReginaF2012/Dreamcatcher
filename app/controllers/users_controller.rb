@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 
     def show
         if @user = User.find_by(id: params[:id])
+            set_dreams
             render 'show'
         else
             redirect_to root_path

@@ -1,4 +1,8 @@
 <div class="container">
   <h1><%= @user.username %></h1>
-
+  <ul><h3>Dreams:</h3>
+    <% @dreams.each do |dream| %>
+     <li><%= link_to(dream.title, dream) %></li> 
+    <% end %>
+  </ul>
 </div>

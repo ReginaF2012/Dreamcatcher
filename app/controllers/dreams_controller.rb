@@ -3,16 +3,8 @@ class DreamsController < ApplicationController
     before_action :require_login, only: [:new, :edit]
 
     def index
-        if params[:user_id]
-            @user = User.find_by(id: params[:user_id])
-            if @user == current_user
-                @dreams = @user.dreams 
-            else
-                @dreams = @user.dreams.made_public
-            end
-        else
-            @dreams = Dream.all.made_public
-        end     
+        params[:user_id] && @user = User.find_by(id: params[:user_id])
+        set_dreams
     end
 
     def new
