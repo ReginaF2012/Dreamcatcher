@@ -24,9 +24,9 @@ class User < ApplicationRecord
     def self.find_unique_username(name)
         username = name.parameterize(separator: '_')
         #An array of usernames similar to the parameterized version of the name 
-        # e.g; name = "John Doe", this might return ["john_doe", "john_doe_1", "john_doe44"]
+        # e.g; name = "John Doe", this might return ["john_doe", "john_doe_1", "john_doe44"] <-usernames in db
         taken_usernames = User.where("username LIKE ?", "#{username}%").pluck(:username)
-
+  
         count = 1
         #If the username is identical to one of the names in the database loop until a unique name is found
         while taken_usernames.include?(username)
@@ -35,7 +35,7 @@ class User < ApplicationRecord
             username = name.parameterize(separator: '_')
             username = "#{username}_#{count}"
             count += 1
-        end
+        end 
         username
       end
 

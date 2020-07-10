@@ -29,7 +29,11 @@ class DreamsController < ApplicationController
     end
     
     def update
-        byebug
+        if @dream.update(dream_params(:title, :content, :is_public, :dream_type))
+            redirect_to user_dream_path(current_user, @dream)
+        else
+            render 'edit'
+        end
     end
 
     def destroy
