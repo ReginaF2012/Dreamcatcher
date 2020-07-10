@@ -1,4 +1,4 @@
-<%= form_with model: dream, url: url, local: true do |f| %>
+<%= bootstrap_form_with model: dream, url: url, local: true do |f| %>
   <% if dream.errors.any? %>
     <div id="error_explanation" class="alert alert-danger" role="alert">
       <h2>
@@ -14,38 +14,37 @@
 
     </div>
   <% end %>
-  <div class="form-group">
     <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.label "Title:" %>
-    <%= f.text_field :title %>
+
+    <%= f.text_field :title, label: "Title:" %>
     <br>
-    <%= f.label "Content:" %><br>
-    <%= f.text_area :content, size:"100x10" %>
+
+    <%= f.text_area :content, size:"100x10", label: "Content:" %>
+    <br>
     <p>
-      <%= f.label "Type:" %><br>
+      <%= f.label "Type:" %>
       <%= f.radio_button :dream_type, "Standard", checked: true %>
-      <%= f.label :dream_type, "Standard", value: "Standard" %>
+    
       <%= f.radio_button :dream_type, "Lucid" %>
-      <%= f.label :dream_type, "Lucid", value: "Lucid" %>
+
       <%= f.radio_button :dream_type, "Reoccurring" %>
-      <%= f.label :dream_type, "Reoccurring", value: "Reoccurring" %>
+
       <%= f.radio_button :dream_type, "Nightmare" %>
-      <%= f.label :dream_type, "Nightmare", value: "Nightmare" %>
+
       <%= f.radio_button :dream_type, "False Awakening" %>
-      <%= f.label :dream_type, "False Awakening", value: "False Awakening" %>
+
       <%= f.radio_button :dream_type, "Sleep Paralysis" %>
-      <%= f.label :dream_type, "Sleep Paralysis", value: "Sleep Paralysis" %>
+
       <%= f.radio_button :dream_type, "Night Terror" %>
-      <%= f.label :dream_type, "Night Terror", value: "Night Terror" %>
+
     </p>
     <p>
       <%= f.label "Make Public?" %><br>
-      <%= f.label :is_public, "Yes", value: true %>
-      <%= f.radio_button :public, true, value: true%>      
-      <%= f.label :is_public, "No", value: false %>
-      <%= f.radio_button :public, false, checked: true, value: false %>
+
+      <%= f.radio_button :public, true, value: true, label: "Yes"%>      
+
+      <%= f.radio_button :public, false, checked: true, value: false, label: "No" %>
     </p>
-  </div>
   <%= f.submit %>
   
 <% end %>

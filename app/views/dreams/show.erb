@@ -5,8 +5,9 @@
     <p><%= @dream.content %></p>
     <% if @dream.user == current_user %>
         <h3>Public: <%= @dream.is_public ? "Yes" : "No" %></h3>
-    <% end %>
-    <% if @dream.user == current_user %>
+        <br>
+        <h3>Add Symbols to <%= @dream.title %></h3>
+        <br>
         <%= button_to "Edit", edit_user_dream_path(current_user, @dream), method: :get %>
         <br>
         <%= form_with method: :delete, url: "/users/#{current_user.id}/dreams/#{@dream.id}" do |f| %>

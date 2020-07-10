@@ -1,5 +1,5 @@
 
-<%= form_with model: user, local: true do |f| %>
+<%= bootstrap_form_with model: user, local: true do |f| %>
   <% if user.errors.any? %>
     <div id="error_explanation" class="alert alert-danger" role="alert">
       <h2>
@@ -14,21 +14,16 @@
       </ul>
     </div>
   <% end %>
-  <div class="form-group">
-    <%= f.label "Username:" %><br>
-    <%= f.text_field :username, value: user.username %><br>
-
-    <%= f.label "Email:" %><br>
-    <%= f.email_field :email, value: user.email %><br>
 
 
-    <%= f.label "Password:" %><br>
-    <%= f.password_field :password %><br>
+    <%= f.text_field :username, label: "Username:" %><br>
 
+    <%= f.email_field :email, label: "Email:" %><br>
 
-    <%= f.label "Password Confirmation:" %><br>
-    <%= f.password_field :password_confirmation %><br>
-  </div>
+    <%= f.password_field :password, label: "Password:" %><br>
+
+    <%= f.password_field :password_confirmation, label: "Password Confirmation:" %><br>
+
   <%= f.submit "Sign Up" if !logged_in? %>
   <%= f.submit "Edit" if logged_in? %>
 <% end %>
