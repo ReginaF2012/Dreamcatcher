@@ -1,11 +1,11 @@
 <div class="container">
     <h1><%= @dream.title %></h1>
     <h3>Type: <%= @dream.dream_type %></h3>
-    <div>
-        <h3>Content:</h3>
-        <p><%= @dream.content %></p>
-    </div>
-    <h3>Public: <%= @dream.is_public ? "Yes" : "No" %></h3>
+    <h3>Content:</h3>
+    <p><%= @dream.content %></p>
+    <% if @dream.user == current_user %>
+        <h3>Public: <%= @dream.is_public ? "Yes" : "No" %></h3>
+    <% end %>
     <% if @dream.user == current_user %>
         <%= button_to "Edit", edit_user_dream_path(current_user, @dream), method: :get %>
         <br>
