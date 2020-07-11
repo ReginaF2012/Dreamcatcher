@@ -5,9 +5,9 @@ class Dream < ApplicationRecord
     validates :content, presence: :true
     before_validation :set_title_if_blank
     belongs_to :user
-    has_many :dream_symbolisms
+    has_many :dream_symbolisms, dependent: :destroy
     has_many :symbolisms, through: :dream_symbolisms
-    accepts_nested_attributes_for :dream_symbolisms
+    accepts_nested_attributes_for :dream_symbolisms, reject_if: proc { |attributes| attributes['meaning'].blank? }
 
 
     def set_title_if_blank
