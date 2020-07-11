@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2020_07_09_184752) do
 
   create_table "dream_symbolisms", force: :cascade do |t|
     t.bigint "dream_id"
-    t.bigint "symbolism_id", null: false
+    t.bigint "symbolism_id"
     t.text "meaning"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

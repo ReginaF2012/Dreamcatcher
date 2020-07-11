@@ -7,7 +7,8 @@ class Dream < ApplicationRecord
     belongs_to :user
     has_many :dream_symbolisms
     has_many :symbolisms, through: :dream_symbolisms
-    accepts_nested_attributes_for :symbolisms, reject_if: :all_blank, allow_destroy: true
+    accepts_nested_attributes_for :dream_symbolisms
+
 
     def set_title_if_blank
         title.blank? && update(title: "Dream ##{user.dreams.count + 1}")

@@ -3,6 +3,19 @@
     <h3>Type: <%= @dream.dream_type %></h3>
     <h3>Content:</h3>
     <p><%= @dream.content %></p>
+    <h3>Symbols:</h3>
+    <ul>
+        <% @symbolisms.each do |symbolism| %>
+        <h5>Name: <%= symbolism.name %></h5>
+        <ul>
+            <h6>Meanings:</h6>
+            <% symbolism.meanings.each do |meaning| %>
+                <li><%= meaning %></li>
+            <% end %>
+        </ul>
+        <br><br>
+        <% end %>
+    </ul>
     <% if @dream.user == current_user %>
         <h3>Public: <%= @dream.is_public ? "Yes" : "No" %></h3>
         <br>
@@ -13,8 +26,10 @@
         <% end %>
         <br>
         <h3>Add Symbols to <%= @dream.title %></h3>
-        <%= bootstrap_form_with method: :get, url: new_user_dream_symbolism_path(current_user, @dream) do |f| %>
-            <%= f.number_field :number, min: "0", label: "How many symbols would you like to add?" %>
+        <%= bootstrap_form_with method: :get, url: "/add-symbols", local: true do |f| %>
+            <%= f.hidden_field :user_id, value: @dream.user.id %>
+            <%= f.hidden_field :dream_id, value: @dream.id %>
+            <%= f.number_field :number, min: "1", label: "How many symbols would you like to add?" %>
             <%= f.submit "Add Symbols" %>
         <% end %>
         <br>

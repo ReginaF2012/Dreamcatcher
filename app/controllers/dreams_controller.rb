@@ -1,5 +1,5 @@
 class DreamsController < ApplicationController
-    before_action :require_login, only: [:new, :edit, :update, :destroy]
+    before_action :require_login, only: [:new, :edit, :update, :destroy, :add_symbolisms]
     before_action :set_dream, only: [:show, :edit, :update, :destroy]
     before_action :check_user, only: [:edit, :update, :destroy]
 
@@ -13,6 +13,7 @@ class DreamsController < ApplicationController
     end
 
 
+
     def create
         @dream = Dream.new(dream_params(:user_id, :title, :content, :dream_type, :is_public))
         if @dream.save
@@ -23,6 +24,7 @@ class DreamsController < ApplicationController
     end
 
     def show
+        @symbolisms = @dream.symbolisms
     end
 
     def edit
@@ -39,6 +41,16 @@ class DreamsController < ApplicationController
     def destroy
         @dream.destroy
         redirect_to user_dreams_path(current_user)
+    end
+
+
+    def add_symbolisms
+        @dream = Dream.find_by(id: params[:dream][:dream_id])
+        if  @dream.update(dream_params(dream_symbolisms_attributes: [:meaning, :symbolism_id, symbolism_attributes: [:name]]))
+            redirect_to user_dream_path(current_user, @dream)
+        else
+            render 'dream_symbolisms/new'
+        end
     end
 
     private
