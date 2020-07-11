@@ -13,6 +13,8 @@ gem 'dotenv-rails'
 
 gem "bootstrap_form", "~> 4.0"
 
+gem 'font-awesome-sass'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 # Use postgresql as the database for Active Record
