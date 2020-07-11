@@ -1,0 +1,25 @@
+    <br>
+    <table class="table table-striped table-dark">
+        <thead>
+                <tr>
+                <% if @user == current_user%>
+                    <th colspan="3"><h3>Your Dreams</h3></th>
+                <% else%>
+                    <th colspan="3"><h3><%= @user.username %>'s Dreams</h3></th>
+                <% end%>
+            </tr>
+            <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @dreams.each do |dream| %>
+                <tr>
+                <th scope="row"><%= link_to dream.title, user_dream_path(dream.user, dream) %></th>
+                <td><%= dream.dream_type %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <br>
