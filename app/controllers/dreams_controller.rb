@@ -24,7 +24,7 @@ class DreamsController < ApplicationController
     end
 
     def show
-        @symbolisms = @dream.symbolisms
+        @dream_symbolisms = @dream.dream_symbolisms
     end
 
     def edit
