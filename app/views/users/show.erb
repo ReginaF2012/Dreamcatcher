@@ -1,5 +1,5 @@
 <div class="container">
-  <h1><%= @user.username %></h1>
+  <h1><%= icon('fas', 'user') + " " + @user.username %></h1>
   <%= render 'dreams/dream_table_without_user_col' %>
 </div>
 <br>
