@@ -6,16 +6,24 @@
     <% if @dream_symbolisms.any? %>
         <h3>Symbols:</h3>
 
-        <div class="list-group">
+        
             <% @dream_symbolisms.each do |dream_symbol| %>
-                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="list-group">
+                <li class="list-group-item list-group-item-action flex-column align-items-star">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1"><%= dream_symbol.name %></h5>
+                        <small>
+                        <%= link_to icon('fas', 'edit') + " Edit", edit_dream_symbolism_path %>
+                        <%= link_to icon('fas', 'trash-alt') + " Delete", " /dream_symbolisms/#{dream_symbol.id}", method: :delete, data: {confirm: "Are you sure you want to delete #{dream_symbol.name}?"} %>
+                        </small>
+                        
+                        
                     </div>
                     <p class="mb-1"><%= dream_symbol.meaning %></p>    
-                </a>
+                </li>
+                </div>
             <% end %>
-        </div>
+        
     <% end %>
 
     <% if @dream.user == current_user %>
