@@ -1,8 +1,24 @@
 <div class="container">
-    <ul><h1>Dreams:</h1>
-        <% @dreams.each do |dream| %>
-            <li><%= link_to(dream.title, user_dream_path(dream.user, dream)) %></li>
-        <% end %>
-    </ul>
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+            <th colspan="3"><h3>Dreams</h3></th>
+            </tr>
+            <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Type</th>
+            <th scope="col">User</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @dreams.each do |dream| %>
+                <tr>
+                <th scope="row"><%= link_to(dream.title, user_dream_path(dream.user, dream)) %></th>
+                <td><%= dream.dream_type %></td>
+                <td><%= link_to dream.user.username, user_path(dream.user) %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
 </div>
 <br>
