@@ -1,7 +1,9 @@
 class DreamSymbolism < ApplicationRecord
   belongs_to :dream, optional: true
-  belongs_to :symbolism, optional: true
-  accepts_nested_attributes_for :symbolism, reject_if: proc { |attributes| attributes['name'].blank? }
+  belongs_to :symbolism
+  validates :meaning, presence: true
+  validates :symbolism, presence: true
+  accepts_nested_attributes_for :symbolism
 
   def name
     self.symbolism.name

@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :create] do
     resources :dreams
   end
-  resources :dream_symbolisms
-  resources :dreams, only: [:show, :index]
+  resources :dream_symbolisms, only: [:edit, :update, :destroy]
+  resources :dreams, only: [:index]
   get '/add-symbols', to: 'dream_symbolisms#new'
-  post '/add-symbols', to: 'dreams#add_symbolisms'
+  post '/add-symbols', to: 'dream_symbolisms#create'
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/signup', to: 'users#new', as: 'signup'
   get '/login', to: 'sessions#new', as: 'login'

@@ -7,7 +7,7 @@ class Dream < ApplicationRecord
     belongs_to :user
     has_many :dream_symbolisms, dependent: :destroy
     has_many :symbolisms, through: :dream_symbolisms
-    accepts_nested_attributes_for :dream_symbolisms, reject_if: proc { |attributes| attributes['meaning'].blank? }
+    accepts_nested_attributes_for :dream_symbolisms
 
 
     def set_title_if_blank

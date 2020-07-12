@@ -42,7 +42,7 @@
         <%= bootstrap_form_with method: :get, url: "/add-symbols", local: true do |f| %>
             <%= f.hidden_field :user_id, value: @dream.user.id %>
             <%= f.hidden_field :dream_id, value: @dream.id %>
-            <%= f.number_field :number, min: "1", label: "How many symbols would you like to add?" %>
+            <%= f.number_field :number, min: "1", required: true, label: "How many symbols would you like to add?" %>
             <%= f.submit "Add Symbols" %>
         <% end %>
         <br>

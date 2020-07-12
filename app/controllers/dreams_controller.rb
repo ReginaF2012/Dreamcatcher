@@ -43,16 +43,6 @@ class DreamsController < ApplicationController
         redirect_to user_dreams_path(current_user)
     end
 
-
-    def add_symbolisms
-        @dream = Dream.find_by(id: params[:dream][:dream_id])
-        if  @dream.update(dream_params(dream_symbolisms_attributes: [:meaning, :symbolism_id, symbolism_attributes: [:name]]))
-            redirect_to user_dream_path(current_user, @dream)
-        else
-            render 'dream_symbolisms/new'
-        end
-    end
-
     private
 
     def dream_params(*args)

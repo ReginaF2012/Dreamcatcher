@@ -1,19 +1,19 @@
 <div class="container">
     <h1>Adding Symbols to <%= @dream.title %></h1>
-    <%= bootstrap_form_with model: @dream, method: :post, url: "/add-symbols" do |f| %>
+    <%= bootstrap_form_with model: @dream, method: :post, url: "/add-symbols", local: true do |f| %>
+    <%= render 'dreams/error_explanation', dream: @dream %>
         <%= f.hidden_field :dream_id, value: @dream.id %>
-        <% @num.times do %>
-            <%= f.fields_for :dream_symbolisms, @dream.dream_symbolisms.build do |dsf| %>
+            <%= f.fields_for :dream_symbolisms, @dream.dream_symbolisms do |dsf| %>
                 <%= dsf.collection_select :symbolism_id, @dream.user.symbolisms, :id, :name, {label: "Select the name of an existing symbol:", include_blank: true} %>
                 <p>or</p>
                 <%= dsf.fields_for :symbolism, Symbolism.new do |sf| %>
                     <%= sf.text_field :name, label: "Type in the name of a new symbol:" %>
                 <% end %>
                 <%= dsf.text_field :meaning, label: "What is the meaning of this symbol?" %>
-                <br><br><br>
+                <br>
             <% end %>
-        <% end %>
-        <%= f.submit %>
+        <br>
+        <%= f.submit "Add Symbols" %>
     <% end %>
     <br>
 </div>
