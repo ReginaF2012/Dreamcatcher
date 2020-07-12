@@ -2,20 +2,13 @@
     <br>
     <h1>Editing <%= @dream_symbolism.name %></h1>
     <%= bootstrap_form_with model: @dream_symbolism, local: true do |f| %>
-
-        <h3>Change Name?</h3>
-        <p>
-            <%= f.collection_select :symbolism_id, @dream_symbolism.dream.user.symbolisms, :id, :name, {label: "Select the name of an existing symbol:", include_blank: true} %>
-            <p>or</p>
-            <%= f.fields_for :symbolism, Symbolism.new do |sf| %>
-                <%= sf.text_field :name, label: "Type in the name of a new symbol:" %>
+    
+            <%= f.fields_for :symbolism, @dream_symbolism.symbolism do |sf| %>
+                <%= sf.text_field :name, label: "Name:" %>
             <% end %>
-        </p>
 
-        <h3>Change Meaning?</h3>
-        <p>
-            <%= f.text_field :meaning, label: "Meaning:" %>
-        </p>
+        <%= f.text_field :meaning, label: "Meaning:" %>
+
         <%= f.submit  "Update #{@dream_symbolism.name}" %>
     <% end %>
     <br>
