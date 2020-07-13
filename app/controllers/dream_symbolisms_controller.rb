@@ -4,18 +4,21 @@ class DreamSymbolismsController < ApplicationController
     before_action :check_user, only: [:edit, :update, :destroy]
 
     def new
-        @num = params[:number].to_i
         @dream = Dream.find_by(id: params[:dream_id])
-        @num.times { @dream.dream_symbolisms.build }
+        @num = params[:number].to_i
+        @num.times do 
+            s = @dream.symbolisms.build
+            @dream.dream_symbolisms.build(symbolism: s)
+            @dream.symbolisms.build
+        end
     end
 
     def create
-        if @dream = Dream.find_by(id: params[:dream][:dream_id])
-            if  @dream.update(dream_params(dream_symbolisms_attributes: [:meaning, :symbolism_id, symbolism_attributes: [:name]]))
-                redirect_to user_dream_path(current_user, @dream)
-            else
-                render 'new'
-            end
+        @dream = Dream.find_by(id: params[:dream_id])
+        if @dream.update(dream_params(dream_symbolisms_attributes: [:meaning, symbolism_attributes: [:name]]))
+            redirect_to user_dream_path(current_user, @dream)
+        else
+            render 'new'
         end
     end
 

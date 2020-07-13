@@ -1,5 +1,5 @@
 class DreamsController < ApplicationController
-    before_action :require_login, only: [:new, :edit, :update, :destroy, :add_symbolisms]
+    before_action :require_login, only: [:new, :edit, :update, :destroy]
     before_action :set_dream, only: [:show, :edit, :update, :destroy]
     before_action :check_user, only: [:edit, :update, :destroy]
 
