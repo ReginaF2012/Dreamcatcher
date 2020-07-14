@@ -9,12 +9,13 @@ class DreamSymbolismsController < ApplicationController
     end
 
     def create
-        byebug
+        @dream = Dream.find_by(id: params[:dream_id])
         dream_symbolism_attrs = params.require(:dream_symbolisms).permit(instances: [:symbolism_id, :meaning, :dream_id, symbolism_attributes: [:name]]).fetch(:instances)
         dream_symbolism_attrs.each do |ds_attr|
-            DreamSymbolism.create(ds_attr)
+            @dream_symbolism = DreamSymbolism.create(ds_attr)
+            flash[:error] = @dream_symbolism.errors.full_messages if @dream_symbolism.errors.any?
         end
-        end
+        redirect_to user_dream_path(@dream.user, @dream)
     end
 
     def edit
@@ -41,11 +42,7 @@ class DreamSymbolismsController < ApplicationController
     end
     
     def dream_symbolism_params(*args)
-        params.permit(*args)
-    end
-
-    def dream_params(*args)
-        params.require(:dream).permit(*args)
+        params.require(:dream_symbolism).permit(*args)
     end
 
     def check_user

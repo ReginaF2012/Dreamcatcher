@@ -3,7 +3,6 @@
     <h1>Adding Symbols to <%= @dream.title %></h1>
     <%= bootstrap_form_with url: user_dream_dream_symbolisms_path(current_user, @dream), method: :post, local: true do |f| %>
         <%# render 'dreams/error_explanation', dream: @dream %>
-
         <% @num.times do  %>
             <%= f.collection_select "dream_symbolisms[instances][][symbolism_id]" , Symbolism.all, :id, :name, include_blank: true, label: "Name:" %>
             <%= f.text_field "dream_symbolisms[instances][][symbolism_attributes][name]", label: "Or Make A New Symbol"%>

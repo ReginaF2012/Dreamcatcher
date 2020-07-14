@@ -18,9 +18,11 @@
     <%= render 'layouts/nav' %>
 
     <% if flash[:error] %>
-      <div id="error_explanation" class="alert alert-danger" role="alert">
-        <%= flash[:error] %>
-      </div>
+      <% flash[:error].each do |msg| %>
+        <div id="error_explanation" class="alert alert-danger" role="alert">
+          <%= msg %>
+        </div>
+      <% end %>
     <% end %>
     <br>
 
