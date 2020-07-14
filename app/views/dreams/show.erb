@@ -1,31 +1,30 @@
 <div class="container">
     <h1><%= @dream.title %></h1>
     <h3>Type: <%= @dream.dream_type %></h3>
-    <h3>Content:</h3>
-    <p><%= @dream.content %></p>
+    <div class="card text-white bg-dark mb-3">
+          <div class="card-header">Content:</div>
+          <div class="card-body"><%= @dream.content %></div>
+    </div>
     <% if @dream_symbolisms.any? %>
-        <h3>Symbols:</h3>
 
-        
+        <div class="card text-white bg-dark mb-3" style="max-width: 75%rem;">
+            <div class="card-header">Symbols:</div>
+
             <% @dream_symbolisms.each do |dream_symbol| %>
-            <div class="list-group">
-                <li class="list-group-item list-group-item-action flex-column align-items-star">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1"><%= dream_symbol.name %></h5>
-                        <% if @dream.user == current_user %>
-                            <small>
-                            <%= link_to icon('fas', 'edit') + " Edit", edit_user_dream_dream_symbolism_path(current_user, @dream, dream_symbol) %>
-                            <%= link_to icon('fas', 'trash-alt') + " Delete", user_dream_dream_symbolism_path(current_user, @dream, dream_symbol), method: :delete, data: {confirm: "Are you sure you want to delete #{dream_symbol.name}?"} %>
-                            </small>
-                        <% end %>
-                        
-                        
-                    </div>
-                    <p class="mb-1"><%= dream_symbol.meaning %></p>    
-                </li>
+                <h5 class="card-header"><%= dream_symbol.name %></h5>
+                <div class="card-body">
+                    <div class="card-text"><%= @dream.content %></div>
+                    
+                    <% if @dream.user == current_user %>
+                        <small>
+                        <%= link_to icon('fas', 'edit') + " Edit", edit_user_dream_dream_symbolism_path(current_user, @dream, dream_symbol) %>
+                        <%= link_to icon('fas', 'trash-alt') + " Delete", user_dream_dream_symbolism_path(current_user, @dream, dream_symbol), method: :delete, data: {confirm: "Are you sure you want to delete #{dream_symbol.name}?"} %>
+                        </small>
+                    <% end %>
                 </div>
             <% end %>
-        
+        </div>
+
     <% end %>
     <br>
 

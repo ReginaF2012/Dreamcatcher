@@ -4,10 +4,17 @@
     <%= bootstrap_form_with url: user_dream_dream_symbolisms_path(current_user, @dream), method: :post, local: true do |f| %>
         <%# render 'dreams/error_explanation', dream: @dream %>
         <% @num.times do  %>
-            <%= f.collection_select "dream_symbolisms[instances][][symbolism_id]" , Symbolism.all, :id, :name, include_blank: true, label: "Name:" %>
-            <%= f.text_field "dream_symbolisms[instances][][symbolism_attributes][name]", label: "Or Make A New Symbol"%>
-            <%= f.text_field "dream_symbolisms[instances][][meaning]", label: "Meaning:" %>
-            <%= f.hidden_field "dream_symbolisms[instances][][dream_id]", value: @dream.id %>
+        <div class="card text-white bg-dark mb-3" style="max-width: 75%rem;">
+                <div class="card-body">
+                    <p class="card-text">
+                        <%= f.collection_select "dream_symbolisms[instances][][symbolism_id]" , Symbolism.all, :id, :name, include_blank: true, label: "Pick From Existing:" %>
+                        <%= f.text_field "dream_symbolisms[instances][][symbolism_attributes][name]", label: "Or Make A New Symbol:"%>
+                        <%= f.text_field "dream_symbolisms[instances][][meaning]", label: "Meaning:" %>
+                        <%= f.hidden_field "dream_symbolisms[instances][][dream_id]", value: @dream.id %>
+                    </p>
+                 </div>
+            </div>
+            <br>
         <% end %>
     <%= f.submit "Add" %>
     <% end %>

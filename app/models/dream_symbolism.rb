@@ -3,6 +3,8 @@ class DreamSymbolism < ApplicationRecord
   belongs_to :symbolism
   validates :meaning, presence: true
   validates :symbolism_id, presence: true
+  # scope :names, -> { joins(:symbolism).pluck(:name)}
+  # scope :is_public?, -> { joins(:dream).references(:dream).where("dreams.is_public = ?", true).pluck(:id) }
   # accepts_nested_attributes_for :symbolism, reject_if: proc  {|attribute| attribute['name'].blank? }
 
   def symbolism_attributes=(symbolism_attributes)
@@ -13,6 +15,10 @@ class DreamSymbolism < ApplicationRecord
   
   def name
     self.symbolism.name
+  end
+
+  def public_meaning
+    self.dream.is_public?
   end
 
 end
