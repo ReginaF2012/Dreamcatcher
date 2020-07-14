@@ -1,5 +1,5 @@
 class DreamSymbolismsController < ApplicationController
-    before_action :require_login, only: [:new, :create, :edit, :destroy]
+    before_action :require_login, only: [:new, :create, :edit, :update, :destroy]
     before_action :set_dream_symbolism, only: [:edit, :update, :destroy]
     before_action :check_user, only: [:edit, :update, :destroy]
 
@@ -10,6 +10,8 @@ class DreamSymbolismsController < ApplicationController
 
     def create
         @dream = Dream.find_by(id: params[:dream_id])
+        byebug
+        
         dream_symbolism_attrs = params.require(:dream_symbolisms).permit(instances: [:symbolism_id, :meaning, :dream_id, symbolism_attributes: [:name]]).fetch(:instances)
         dream_symbolism_attrs.each do |ds_attr|
             @dream_symbolism = DreamSymbolism.create(ds_attr)

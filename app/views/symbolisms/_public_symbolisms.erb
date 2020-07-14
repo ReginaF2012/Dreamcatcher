@@ -1,0 +1,22 @@
+    <div class="card text-white bg-dark mb-3" style="max-width: 75%rem;">
+      <div class="card-header">Symbols</div>
+      <% @symbolisms.order(:name).each do |symbolism| %>
+        <% if symbolism.has_public_meanings? %>
+          <div class="card-body">
+            <h5 class="card-title"><%= symbolism.name %></h5>
+            <h6 class="card-title">Meanings:</h6>
+            <% symbolism.dream_symbolisms.each do |dream_symbolism| %>
+              <% if dream_symbolism.is_public? %>
+                <p class="card-text"><%= dream_symbolism.meaning %></p>
+
+                <% if !@user %>
+                    <footer class="blockquote-footer"><%= link_to icon('fas', 'user') + " " + dream_symbolism.dream.user.username, user_path(dream_symbolism.dream.user) %></footer>
+                <% end %>
+                <footer class="blockquote-footer"><%= link_to icon('fas', 'cloud-moon') + " " + dream_symbolism.dream.title, user_dream_path(dream_symbolism.dream.user, dream_symbolism.dream) %></footer>
+
+              <% end %>
+            <% end%>
+          </div>
+        <% end %>
+      <% end %>
+    </div>

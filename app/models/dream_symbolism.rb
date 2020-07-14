@@ -17,7 +17,7 @@ class DreamSymbolism < ApplicationRecord
     self.symbolism.name
   end
 
-  def public_meaning
+  def is_public?
     self.dream.is_public?
   end
 

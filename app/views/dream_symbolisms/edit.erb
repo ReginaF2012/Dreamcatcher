@@ -1,7 +1,7 @@
 <div class="container">
     <br>
     <h1>Editing <%= @dream_symbolism.name %></h1>
-    <%= bootstrap_form_with model: @dream_symbolism, local: true do |f| %>
+    <%= bootstrap_form_with model: @dream_symbolism, url: user_dream_dream_symbolism_path(current_user, @dream_symbolism.dream, @dream_symbolism), local: true do |f| %>
     
         <%= f.collection_select :symbolism_id , Symbolism.all, :id, :name, include_blank: true, label: "Existing Name:" %>
             <%= f.fields_for :symbolism, Symbolism.new do |sf| %>

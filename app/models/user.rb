@@ -2,9 +2,12 @@ class User < ApplicationRecord
     validates :username, presence: :true, uniqueness: :true
     validates :email, presence: :true, uniqueness: :true
     has_many :dreams, dependent: :destroy
-    has_many :symbolisms, through: :dreams
+    has_many :dream_symbolisms, through: :dreams
+    has_many :symbolisms, through: :dream_symbolisms
     validates :password_confirmation, presence: true
     has_secure_password
+
+
 
     def self.find_or_create_by_auth_hash(auth_hash)
         #If the user is already in the db

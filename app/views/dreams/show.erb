@@ -1,8 +1,8 @@
 <div class="container">
-    <h1><%= @dream.title %></h1>
-    <h3>Type: <%= @dream.dream_type %></h3>
     <div class="card text-white bg-dark mb-3">
+          <div class="card-title"><%= @dream.title %></div>
           <div class="card-header">Content:</div>
+          <div class="card-header">Type: <%= @dream.dream_type %></div>
           <div class="card-body"><%= @dream.content %></div>
     </div>
     <% if @dream_symbolisms.any? %>
@@ -13,7 +13,7 @@
             <% @dream_symbolisms.each do |dream_symbol| %>
                 <h5 class="card-header"><%= dream_symbol.name %></h5>
                 <div class="card-body">
-                    <div class="card-text"><%= @dream.content %></div>
+                    <div class="card-text"><%= dream_symbol.meaning %></div>
                     
                     <% if @dream.user == current_user %>
                         <small>

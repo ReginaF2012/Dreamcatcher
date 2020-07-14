@@ -12,4 +12,6 @@ class Dream < ApplicationRecord
     def set_title_if_blank
         title.blank? && update(title: "Dream ##{user.dreams.count + 1}")
     end
+
+
 end
