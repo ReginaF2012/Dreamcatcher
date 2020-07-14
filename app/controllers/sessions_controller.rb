@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
         #If the user is logging in via omniauth
         if auth_hash = request.env['omniauth.auth']
             @user = User.find_or_create_by_auth_hash(auth_hash)
+            byebug
             log_in
         else
             #if the user can be found in the db via email

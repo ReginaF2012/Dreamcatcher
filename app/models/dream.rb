@@ -7,18 +7,7 @@ class Dream < ApplicationRecord
     belongs_to :user
     has_many :dream_symbolisms, dependent: :destroy
     has_many :symbolisms, through: :dream_symbolisms
-    #accepts_nested_attributes_for :dream_symbolisms
-
-    def dream_symbolisms_attributes=(dream_symbolism_attributes)
-        
-        dream_symbolism_attributes.values.each do |dream_symbolism_attribute|
-            dream_symbolism = DreamSymbolism.find_or_create_by(meaning: dream_symbolism_attribute[:meaning])
-            dream_symbolism.update(dream_symbolism_attribute)
-            dream_symbolism.dream = self
-            dream_symbolism.save
-        end
-    end
-
+    accepts_nested_attributes_for :dream_symbolisms, reject_if: proc { |attributes| attributes['meaning'].blank? }
 
     def set_title_if_blank
         title.blank? && update(title: "Dream ##{user.dreams.count + 1}")

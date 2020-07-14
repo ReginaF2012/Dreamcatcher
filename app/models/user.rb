@@ -15,7 +15,8 @@ class User < ApplicationRecord
             #creating a username to assign to new user
             username = self.find_unique_username(auth_hash['info']['name'])
             #create and return new user
-            self.create(email: auth_hash['info']['email'], username: username, password: SecureRandom.hex)
+            pass = SecureRandom.hex
+            self.create(email: auth_hash['info']['email'], username: username, password: pass, password_confirmation: pass )
         end
     end
 

@@ -6,22 +6,16 @@ class DreamSymbolismsController < ApplicationController
     def new
         @dream = Dream.find_by(id: params[:dream_id])
         @num = params[:number].to_i
-        @num.times do 
-            s = @dream.symbolisms.build
-            @dream.dream_symbolisms.build(symbolism: s)
-            @dream.symbolisms.build
-        end
     end
 
     def create
-        @dream = Dream.find_by(id: params[:dream_id])
-        if @dream.update(dream_params(dream_symbolisms_attributes: [:meaning, symbolism_attributes: [:name]]))
-            redirect_to user_dream_path(current_user, @dream)
-        else
-            render 'new'
+        byebug
+        dream_symbolism_attrs = params.require(:dream_symbolisms).permit(instances: [:symbolism_id, :meaning, :dream_id, symbolism_attributes: [:name]]).fetch(:instances)
+        dream_symbolism_attrs.each do |ds_attr|
+            DreamSymbolism.create(ds_attr)
+        end
         end
     end
-
 
     def edit
     end
@@ -47,7 +41,7 @@ class DreamSymbolismsController < ApplicationController
     end
     
     def dream_symbolism_params(*args)
-        params.require(:dream_symbolism).permit(*args)
+        params.permit(*args)
     end
 
     def dream_params(*args)
