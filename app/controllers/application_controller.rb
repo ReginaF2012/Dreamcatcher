@@ -25,12 +25,12 @@ class ApplicationController < ActionController::Base
     def set_dreams
         if @user
           if @user == current_user
-            @dreams = @user.dreams
+            @dreams = @user.dreams.order('created_at DESC')
           else 
-            @dreams = @user.dreams.made_public
+            @dreams = @user.dreams..order('created_at DESC')
           end
         else
-          @dreams = Dream.all.made_public
+          @dreams = Dream.all.made_public.order('created_at DESC')
         end
     end
 end
