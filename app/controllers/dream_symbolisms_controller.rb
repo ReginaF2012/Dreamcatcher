@@ -10,7 +10,6 @@ class DreamSymbolismsController < ApplicationController
 
     def create
         @dream = Dream.find_by(id: params[:dream_id])
-        byebug
         
         dream_symbolism_attrs = params.require(:dream_symbolisms).permit(instances: [:symbolism_id, :meaning, :dream_id, symbolism_attributes: [:name]]).fetch(:instances)
         dream_symbolism_attrs.each do |ds_attr|

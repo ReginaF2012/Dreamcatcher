@@ -1,8 +1,8 @@
     <div class="card text-white bg-dark mb-3" style="max-width: 75%rem;">
       <div class="card-header">Symbols</div>
-      <% @symbolisms.order(:name).each do |symbolism| %>
+      <% @symbolisms.order(:name).uniq.each do |symbolism| %>
           <div class="card-body">
-            <h5 class="card-title">Name: <%= symbolism.name %></h5>
+            <h5 class="card-title"><%= link_to icon('fas', 'dragon') + " " + symbolism.name, symbolism_path(symbolism) %></h5>
             <h6 class="card-title">Meanings:</h3>
             <% symbolism.dream_symbolisms.each do |dream_symbolism| %>
                 <p class="card-text"><%= dream_symbolism.meaning %></p>

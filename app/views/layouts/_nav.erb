@@ -5,18 +5,22 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link" href="<%= root_path %>">Home</a>
+          <a class="nav-item nav-link" href="<%= dreams_path %>">Dreams</a>
+          <a class="nav-item nav-link" href="<%= symbolisms_path %>">Symbols</a>
           <% if logged_in? %>
             <a class="nav-item nav-link" href="<%= user_path(current_user) %>">Profile</a>
-            <li class="nav-item dropdown">
+            <a class="nav-item nav-link" href="<%= new_user_dream_path(current_user) %>">New Dream</a>
+            <a class="nav-item nav-link" href="<%= user_symbolisms_path(current_user) %>">Your Symbols</a>
+            
+            <!--<li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Your Dreams
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="<%= user_dreams_path(current_user) %>">All</a>
+                <a class="dropdown-item" href="<%= user_path(current_user) %>">All</a>
                 <a class="dropdown-item" href="<%= new_user_dream_path(current_user) %>">New</a>
               </div>
-            </li>
+            </li> -->
             <a class="nav-item nav-link" href="<%= logout_path %>">Log Out</a>
           <% else %>
             <a class="nav-item nav-link" href="<%= login_path %>">Login</a>

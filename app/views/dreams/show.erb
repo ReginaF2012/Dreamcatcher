@@ -1,8 +1,9 @@
 <div class="container">
+    <br>
     <div class="card text-white bg-dark mb-3">
           <div class="card-title"><%= @dream.title %></div>
-          <div class="card-header">Content:</div>
           <div class="card-header">Type: <%= @dream.dream_type %></div>
+          <div class="card-header">Content:</div>
           <div class="card-body"><%= @dream.content %></div>
     </div>
     <% if @dream_symbolisms.any? %>
@@ -45,6 +46,6 @@
         <br>
     <% end %>
     
-
+<br>
     
 </div>

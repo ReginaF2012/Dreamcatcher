@@ -18,16 +18,15 @@
     <%= render 'layouts/nav' %>
 
     <% if flash[:error] %>
-      <% flash[:error].each do |msg| %>
         <div id="error_explanation" class="alert alert-danger" role="alert">
-          <%= msg %>
+          <%= flash[:error] %>
         </div>
-      <% end %>
     <% end %>
-    <br>
-
+    <br></br>
     <%= yield %>
-    <br>
+    <br></br>
+    <br></br>
+    <br></br>
     <%= render 'layouts/footer' %>
   </body>
 </html>
