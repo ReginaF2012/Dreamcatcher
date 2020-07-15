@@ -1,24 +1,29 @@
-# README
+# DreamCatcher Overview
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+DreamCatcher is a dream diary website. Once signed up users can post their dream diaries, either publicly or privately. After posting a dream log a user can choose to add symbols to their dream and define the meaning. They can view user's other publicly posted dream logs and there is an index of symbols, with the name and all of the associated meanings added by users in the dreams they've posted publicly. 
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+Fork and clone this repo then create a database
 
-* System dependencies
+    $ rail db:create
 
-* Configuration
+Seed the database
 
-* Database creation
+    $ rake db:seed
 
-* Database initialization
+Startup the server
 
-* How to run the test suite
+    $ rails s
 
-* Services (job queues, cache servers, search engines, etc.)
+View on browser
 
-* Deployment instructions
+    $  localhost:3000
 
-* ...
+## Usage
+
+Users can view all publicly posted dreams and the associated dream symbolism meanings, but sign in is required to create any posts.
+
+## License
+
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
