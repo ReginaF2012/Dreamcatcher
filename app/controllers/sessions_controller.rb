@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
     def new
         #if a user is already logged in redirect them
         if logged_in?
+            flash[:error] = "You are already logged in, log out first and try logging in again!"
             redirect_to root_path
         else
             render 'new'
