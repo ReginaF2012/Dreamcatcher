@@ -1,18 +1,18 @@
 <div class="container">
     <br>
     <div class="card text-white bg-dark mb-3">
-          <div class="card-title"><%= @dream.title %></div>
+          <h2 class="card-header"><%= @dream.title %></h2>
           <div class="card-header">Type: <%= @dream.dream_type %></div>
-          <div class="card-header">Content:</div>
+          <div class="card-header">Content</div>
           <div class="card-body"><%= @dream.content %></div>
     </div>
     <% if @dream_symbolisms.any? %>
 
         <div class="card text-white bg-dark mb-3" style="max-width: 75%rem;">
-            <div class="card-header">Symbols:</div>
+            <h5 class="card-header">Symbols:</h5>
 
             <% @dream_symbolisms.each do |dream_symbol| %>
-                <h5 class="card-header"><%= dream_symbol.name %></h5>
+                <h5 class="card-header"><%= link_to icon('fas', 'dragon') + " " + dream_symbol.symbolism.name, symbolism_path(dream_symbol.symbolism) %></h5>
                 <div class="card-body">
                     <div class="card-text"><%= dream_symbol.meaning %></div>
                     

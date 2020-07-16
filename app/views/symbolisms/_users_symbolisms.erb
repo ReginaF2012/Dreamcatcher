@@ -1,5 +1,5 @@
     <div class="card text-white bg-dark mb-3" style="max-width: 75%rem;">
-      <div class="card-header">Symbols</div>
+      <h2 class="card-header">Symbols</h2>
       <% @symbolisms.order(:name).uniq.each do |symbolism| %>
           <div class="card-body">
             <h5 class="card-title"><%= link_to icon('fas', 'dragon') + " " + symbolism.name, symbolism_path(symbolism) %></h5>

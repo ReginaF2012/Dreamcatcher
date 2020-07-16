@@ -1,6 +1,6 @@
 class DreamsController < ApplicationController
     before_action :require_login, except: [:show, :index ]
-    before_action :set_dream, except: [:show, :index, :new ]
+    before_action :set_dream, except: [:index, :new ]
     before_action :check_user, only: [:edit, :update, :destroy]
 
     def index
