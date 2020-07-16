@@ -3,8 +3,7 @@ class DreamSymbolism < ApplicationRecord
   belongs_to :symbolism
   validates :meaning, presence: true
   validates :symbolism_id, presence: true
-  #! all_public returns an array and NOT an ActiveRecord::Relation.
-  scope :all_public, -> { select(&:is_public?) }
+  scope :all_public, -> { joins(:dream).where('dreams.is_public': true) }
   scope :by_user,  ->(user) { joins(:dream).where("dreams.user": user) }
 
 

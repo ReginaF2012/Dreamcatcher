@@ -6,8 +6,8 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-item nav-link" href="<%= root_path %>">Welcome</a>
-          <a class="nav-item nav-link" href="<%= dreams_path %>">Dreams</a>
-          <a class="nav-item nav-link" href="<%= symbolisms_path %>">Symbols</a>
+          <a class="nav-item nav-link" href="<%= dreams_path %>"><%= icon('fas', 'cloud-moon') %> Dream Logs</a>
+          <a class="nav-item nav-link" href="<%= symbolisms_path %>"><%= icon('fas', 'dragon') %> Symbols</a> 
           <% if logged_in? %>
             <a class="nav-item nav-link" href="<%= user_path(current_user) %>">Profile</a>
             <a class="nav-item nav-link" href="<%= new_user_dream_path(current_user) %>">New Dream Log</a>

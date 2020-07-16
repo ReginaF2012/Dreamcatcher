@@ -5,17 +5,12 @@
         <div class="card-body">
             <h5 class="card-title">Meanings:</h5>
             <% @symbolism.dream_symbolisms.each do |ds| %>
-                <% if current_user == ds.dream.user %>
+                <% if current_user == ds.dream.user || ds.is_public? %>
                     <p class="card-text"><%= ds.meaning %></p>
                     <footer class="blockquote-footer"><%= link_to icon('fas', 'user') + " " + ds.dream.user.username, user_path(ds.dream.user) %></footer>
                     <footer class="blockquote-footer"><%= link_to icon('fas', 'cloud-moon') + " " + ds.dream.title, user_dream_path(ds.dream.user, ds.dream) %></footer>
-                <% else %>
-                    <% if ds.is_public?%>
-                    <p class="card-text"><%= ds.meaning %></p>
-                    <footer class="blockquote-footer"><%= link_to icon('fas', 'user') + " " + ds.dream.user.username, user_path(ds.dream.user) %></footer>
-                    <footer class="blockquote-footer"><%= link_to icon('fas', 'cloud-moon') + " " + ds.dream.title, user_dream_path(ds.dream.user, ds.dream) %></footer>
-                    <% end %>
-                    <% end%>
+
+                <% end%>
             <% end %>
         </div>
         
