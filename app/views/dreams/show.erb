@@ -32,9 +32,9 @@
     <% if @dream.user == current_user %>
         <h3>Public: <%= @dream.is_public ? "Yes" : "No" %></h3>
         <br>
-        <%= button_to "Edit", edit_user_dream_path(current_user, @dream), method: :get, class: "btn btn-secondary" %>
+        <%= button_to "Edit", edit_user_dream_path(@dream.user, @dream), method: :get, class: "btn btn-secondary" %>
         <br>
-        <%= bootstrap_form_with method: :delete, url: user_dream_path(current_user, @dream) do |f| %>
+        <%= bootstrap_form_with method: :delete, url: user_dream_path(@dream.user, @dream) do |f| %>
             <%= f.submit "Delete", data: { confirm: 'Are you sure you want to delete this dream?' } %>
         <% end %>
         <br>

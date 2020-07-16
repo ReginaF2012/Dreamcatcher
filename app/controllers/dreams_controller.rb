@@ -40,7 +40,7 @@ class DreamsController < ApplicationController
 
     def destroy
         @dream.destroy
-        redirect_to user_dreams_path(current_user)
+        redirect_to user_path(current_user)
     end
 
     private

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'dreams#index'
   resources :users, only: [:show, :create] do
     resources :symbolisms, only: [:show, :index]
-    resources :dreams, except: [:index] do
+    resources :dreams do
       resources :dream_symbolisms, only: [:new, :create, :edit, :destroy, :update]
     end
   end
