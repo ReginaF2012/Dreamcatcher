@@ -1,8 +1,5 @@
 <div class="container">
-  <br>
-  <% if @symbolisms.empty? %>
-    <h3></h3>
-  <% else %>
+  <br></br>
     <% if @user && @user == current_user %>
       <%= render 'users_symbolisms' %>
     <% elsif @user %>
@@ -10,6 +7,5 @@
     <% else%>
       <%= render 'public_symbolisms' %>
     <% end%>
-  <% end %>
-  <br>
+  <br></br>
 </div>

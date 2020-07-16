@@ -2,12 +2,16 @@
 <div class="container">
     <br></br>
     <div class="jumbotron container-fluid text-white bg-dark mb-3" width="75%">
-        <h1 class="display-4">Welcome to <%= icon('fas', 'moon') %> Dreamcatcher!</h1>
-        <p class="lead">Dreamcatcher is a digital dream diary. Once you are signed up you can start posting your dream logs, as well as creating and assigning symbols to your dreams.</p>
-        <a class="btn btn-secondary btn-lg" href="<%= signup_path %>" role="button">Signup</a>
+        <h1 style="text-align: center;" class="display-4">Welcome to <%= icon('fas', 'moon') %> Dreamcatcher!</h1>
+        <p style="text-align: center;"class="lead">
+            Dreamcatcher is a digital dream diary. Once you are signed up you can start posting your dream logs, as well as creating and assigning symbols to your dreams.
+            <br></br>
+            <a class="btn btn-secondary btn-lg" href="<%= signup_path %>" role="button">Signup</a>
+        </p>
         <hr class="my-4">
-        <h5><%= icon('fas', 'arrow-circle-down') %><%= icon('fas', 'arrow-circle-down') %><%= icon('fas', 'arrow-circle-down') %> Below is a list of dream logs that have been publicly posted. <%= icon('fas', 'arrow-circle-down') %><%= icon('fas', 'arrow-circle-down') %><%= icon('fas', 'arrow-circle-down') %></h5>
+        <h5 style="text-align: center;"><%= icon('fas', 'arrow-circle-down') %><%= icon('fas', 'arrow-circle-down') %><%= icon('fas', 'arrow-circle-down') %> Below is a list of dream logs that have been publicly posted. <%= icon('fas', 'arrow-circle-down') %><%= icon('fas', 'arrow-circle-down') %><%= icon('fas', 'arrow-circle-down') %></h5>
     </div>
+    <br></br>
 
     <% if @user %>
         <%= render 'dream_table_without_user_col' %>

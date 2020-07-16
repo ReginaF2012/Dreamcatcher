@@ -1,6 +1,7 @@
 <div class="container">
 <br>
-  <h3><%= link_to "#{@user.username}'s Symbols", user_symbolisms_path(@user) %></h3>
   <%= render 'dreams/dream_table_without_user_col' %>
+  <%= link_to icon('fas', 'dragon') + " #{@user.username}'s Symbols", user_symbolisms_path(@user), class: "btn btn-secondary"%>
+  <br></br>
 </div>
 <br>
