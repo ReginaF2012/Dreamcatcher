@@ -3,8 +3,7 @@ class DreamSymbolism < ApplicationRecord
   belongs_to :symbolism
   validates :meaning, presence: true
   validates :symbolism_id, presence: true
-  #? Was trying to come up with a way to clean up my Symbolism index views because they include meanings from dream_symbolism
-  #? None of the below work
+  #! all_public returns an array and NOT an ActiveRecord::Relation.
   scope :all_public, -> { select(&:is_public?) }
   scope :by_user,  ->(user) { joins(:dream).where("dreams.user": user) }
 

@@ -6,8 +6,8 @@ class Symbolism < ApplicationRecord
     scope :with_public_meanings, -> {joins(:dreams).where('dreams.is_public = true')}
 
 
-    def has_public_meanings?
-        self.dreams.where(is_public: true).references(:dream_symbolism).pluck(:meaning).any?
-    end
+    # def has_public_meanings?
+    #     self.dreams.where(is_public: true).references(:dream_symbolism).pluck(:meaning).any?
+    # end
 
 end
