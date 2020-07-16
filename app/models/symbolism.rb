@@ -3,6 +3,7 @@ class Symbolism < ApplicationRecord
     has_many :dreams, through: :dream_symbolisms
     has_many :users, through: :dream_symbolisms
     validates :name, presence: true, uniqueness: true
+    scope :with_public_meanings, -> {joins(:dreams).where('dreams.is_public = true')}
 
 
     def has_public_meanings?

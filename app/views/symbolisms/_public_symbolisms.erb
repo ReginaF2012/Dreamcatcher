@@ -1,7 +1,6 @@
     <div class="card text-white bg-dark mb-3" style="max-width: 75%rem;">
       <h2 class="card-header">Symbols</h2>
-      <% @symbolisms.order(:name).uniq.each do |symbolism| %>
-        <% if symbolism.has_public_meanings? %>
+      <% @symbolisms.order(:name).with_public_meanings.uniq.each do |symbolism| %>
           <div class="card-body">
             <h5 class="card-title"><%= link_to icon('fas', 'dragon') + " " + symbolism.name, symbolism_path(symbolism) %></h5>
             <h6 class="card-title">Meanings:</h6>
@@ -12,6 +11,5 @@
 
             <% end%>
           </div>
-        <% end %>
       <% end %>
     </div>
