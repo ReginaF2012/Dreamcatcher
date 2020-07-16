@@ -25,6 +25,12 @@ class DreamsController < ApplicationController
 
     def show
         @dream_symbolisms = @dream.dream_symbolisms
+        if @dream.is_public? || @dream.user == current_user
+            render 'show'
+        else
+            flash[:error] = "Sorry that page is private!"
+            redirect_to dreams_path
+        end
     end
 
     def edit

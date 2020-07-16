@@ -5,8 +5,8 @@ class DreamSymbolism < ApplicationRecord
   validates :symbolism_id, presence: true
   #? Was trying to come up with a way to clean up my Symbolism index views because they include meanings from dream_symbolism
   #? None of the below work
-  # scope :names, -> { joins(:symbolism).pluck(:name)}
-  # scope :is_public?, -> { joins(:dream).references(:dream).where("dreams.is_public = ?", true).pluck(:id) }
+  scope :all_public, -> { select(&:is_public?) }
+  scope :by_user,  ->(user) { joins(:dream).where("dreams.user": user) }
 
 
   # accepts_nested_attributes_for :symbolism, reject_if: proc  {|attribute| attribute['name'].blank? }
