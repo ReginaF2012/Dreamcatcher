@@ -1,6 +1,6 @@
 <% if dream.errors.any? %>
     <div id="error_explanation" class="alert alert-danger" role="alert">
-        <h2> <%= pluralize(dream.errors.count, "error") %> prohibited this dream from being <%= dream.id ? "updated" : "saved" %>:</h2>
+        <h2> <%= pluralize(dream.errors.count, "error") %> prohibited this dream log from being <%= dream.id ? "updated" : "saved" %>:</h2>
         <ul>
             <% dream.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>

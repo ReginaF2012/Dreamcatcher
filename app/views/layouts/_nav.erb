@@ -9,9 +9,9 @@
           <a class="nav-item nav-link" href="<%= dreams_path %>"><%= icon('fas', 'cloud-moon') %> Dream Logs</a>
           <a class="nav-item nav-link" href="<%= symbolisms_path %>"><%= icon('fas', 'dragon') %> Symbols</a> 
           <% if logged_in? %>
-            <a class="nav-item nav-link" href="<%= user_path(current_user) %>">Profile</a>
-            <a class="nav-item nav-link" href="<%= new_user_dream_path(current_user) %>">New Dream Log</a>
-            <a class="nav-item nav-link" href="<%= user_symbolisms_path(current_user) %>">Your Symbols</a>
+            <a class="nav-item nav-link" href="<%= user_path(current_user) %>"><%= icon('fas', 'user') %> Profile</a>
+            <a class="nav-item nav-link" href="<%= new_user_dream_path(current_user) %>"><%= icon('fas', 'book') %> New Dream Log</a>
+            <a class="nav-item nav-link" href="<%= user_symbolisms_path(current_user) %>"><%= icon('fas', 'user') + icon('fas', 'dragon')  %> Your Symbols</a>
             
             <!--<li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -22,7 +22,7 @@
                 <a class="dropdown-item" href="<%= new_user_dream_path(current_user) %>">New</a>
               </div>
             </li> -->
-            <a class="nav-item nav-link" href="<%= logout_path %>">Log Out</a>
+            <a class="nav-item nav-link" href="<%= logout_path %>"><%= icon('fas', 'sign-out-alt') %> Log Out</a>
           <% else %>
             <a class="nav-item nav-link" href="<%= login_path %>">Login</a>
             <a class="nav-item nav-link" href="<%= signup_path %>">Sign Up</a>

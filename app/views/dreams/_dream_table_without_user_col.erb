@@ -5,9 +5,9 @@
         <thead>
                 <tr>
                 <% if @user == current_user%>
-                    <th colspan="3"><h3>Your Dreams</h3></th>
+                    <th colspan="3"><h3>Your Dream Logs</h3></th>
                 <% else%>
-                    <th colspan="3"><h3><%= @user.username %>'s Dreams</h3></th>
+                    <th colspan="3"><h3><%= @user.username %>'s Dream Logs</h3></th>
                 <% end%>
             </tr>
             <tr>

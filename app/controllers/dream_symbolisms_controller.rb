@@ -54,7 +54,7 @@ class DreamSymbolismsController < ApplicationController
 
     def check_user
         unless current_user == @dream_symbolism.dream.user
-            flash[:error] = "Invalid Input"
+            flash[:error] = "Sorry you can't see this page!"
             redirect_to root_path
         end
     end
